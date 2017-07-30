@@ -9,12 +9,12 @@ using System.Data.Objects;
 using System.Data.SqlClient;
 namespace DrCareApi.Controllers
 {
-    [System.Web.Http.RoutePrefix("api/Medicine")]
+    [System.Web.Http.RoutePrefix("api")]
     public class MedicineController : ApiController
     {
         DRCAREEntities DRCARE = new DRCAREEntities(); //f12 vào đây để coi kiểu trả về khi exec sproc
 
-        [Route("GetAllMedicine")]
+        [Route("Medicine/GetAll")]
         public HttpResponseMessage GetAllMedicine()
         {
             MedicineResult result = new MedicineResult(); //cái này là Model để trả về kết quả cuối cùng
@@ -36,6 +36,92 @@ namespace DrCareApi.Controllers
          }
 
         // viết giống ví dụ trên! 
+
+        [Route("MedicalRecordDetails/DoctorGet/{doctorID?}/{dayCreated}")]
+        [HttpGet]
+        public HttpResponseMessage GetSearchMedicalRecordDetails_Doctor(int? doctorID, string dayCreated)//(int? mecRcID, int? doctorID, string dayCreated)
+        {
+            MedicalRecordDetails_DOCTOR result = new MedicalRecordDetails_DOCTOR(); //cái này là Model để trả về kết quả cuối cùng
+            
+            StatusConnection stt = checkConnection.isServerConnected();
+            
+            result.errorMessage = stt.errorMessage;
+            result.status = stt.status;
+
+            //convert lại string dayCreated theo format dd/MM/yyyy
+            //string text = dayCreated.Trim('"');
+            //text = text.Trim('-');
+            DateTime dt = DateTime.ParseExact(dayCreated, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture);
+            dayCreated = dt.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+            ObjectResult<sp_MedicalRecordDetails_DOCTOR_Get_Result> obj = DRCARE.sp_MedicalRecordDetails_DOCTOR_Get(doctorID, dayCreated);
+            
+            result.response = obj.ToList();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        //[Route("MedicalRecodeDetails/PatientGet/{mecRcID?}/{doctorID?}/{dayCreated}")]
+        [Route("MedicalRecordDetails/PatientGet/{mecRcID?}/{doctorID?}/{dayCreated}")]
+        [HttpGet]
+        public HttpResponseMessage GetSearchMedicalRecordDetails_Patient(int? mecRcID, int? doctorID, string dayCreated)
+        {
+            MedicalRecordDetails_PATIENT_Details result = new MedicalRecordDetails_PATIENT_Details(); //cái này là Model để trả về kết quả cuối cùng
+
+            StatusConnection stt = checkConnection.isServerConnected();
+
+            result.errorMessage = stt.errorMessage;
+            result.status = stt.status;
+            
+            if (dayCreated == "null")
+                dayCreated = null;
+            else
+            {
+                //convert lại string dayCreated từ ddMMyyyy theo format dd/MM/yyyy
+                //string text = dayCreated.Trim('"');
+                //text = text.Trim('-');
+                DateTime dt = DateTime.ParseExact(dayCreated, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture);
+                dayCreated = dt.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            }
+
+            ObjectResult<sp_MedicalRecordDetails_PATIENT_Get_Result> obj = DRCARE.sp_MedicalRecordDetails_PATIENT_Get(mecRcID, doctorID, dayCreated);
+
+            List<MedicalRecordDetails_PATIENT> havePres = new List<MedicalRecordDetails_PATIENT>();
+
+            foreach(sp_MedicalRecordDetails_PATIENT_Get_Result item in obj)
+            {
+                havePres.Add(bindData(item));
+            }
+
+            result.response = havePres;
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        /* mục đích: bind kết quả trả về của Đơn thuốc về vào response khi search Patient luôn 
+         * nên mới tạo 1 class <MedicalRecordDetails_PATIENT> để chứa thông tin của Phiếu khám bệnh và List đơn thuốc của phiếu đó 
+         * hàm này để bind data từ Thông tin phiếu khám bệnh <sp_MedicalRecordDetails_PATIENT_Get_Result>
+         * và List Đơn thuốc <sp_getPrecriptionByMecRcDetailsID_Result> của mỗi phiếu 
+         * vào 1 object <MedicalRecordDetails_PATIENT_Details>
+         *  */
+        private MedicalRecordDetails_PATIENT bindData(sp_MedicalRecordDetails_PATIENT_Get_Result item)
+        {
+            ObjectResult<sp_PRESCRIPTION_getByMecRcDetailsID_Result> pres =
+                                                  DRCARE.sp_PRESCRIPTION_getByMecRcDetailsID(item.MecRcDetailsID);
+            MedicalRecordDetails_PATIENT inside = new MedicalRecordDetails_PATIENT();
+            inside.MecRcDetailsID = item.MecRcDetailsID;
+            inside.PatientID = item.PatientID;
+            inside.DiseaseID = item.DiseaseID;
+            inside.DISEASEName = item.DISEASEName;
+            inside.DoctorID = item.DoctorID;
+            inside.DoctorName = item.DoctorName;
+            inside.Symptoms = item.Symptoms;
+            inside.DayCreated = item.DayCreated;
+            inside.isTaken = item.isTaken;
+            inside.prescription = pres.ToList();
+
+            return inside;
+        }
     }
 
     public class checkConnection

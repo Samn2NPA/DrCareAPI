@@ -6,14 +6,6 @@
     <edmx:StorageModels>
       <Schema Namespace="DRCAREModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="sp_DISEASE_getAllDisease" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_Get_Search_MedicalRecordDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MecRcID" Type="int" Mode="In" />
-          <Parameter Name="DoctorID" Type="int" Mode="In" />
-          <Parameter Name="DayCreated" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="sp_getPrecriptionByMecRcDetailsID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MecRcDtID" Type="int" Mode="In" />
-        </Function>
         <Function Name="sp_getRemindListByMecRcDetailsID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MecRcDetailsID" Type="int" Mode="In" />
         </Function>
@@ -22,6 +14,15 @@
           <Parameter Name="DiseaseID" Type="int" Mode="In" />
           <Parameter Name="DoctorID" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_MedicalRecordDetails_DOCTOR_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DoctorID" Type="int" Mode="In" />
+          <Parameter Name="DayCreated" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_MedicalRecordDetails_PATIENT_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MecRcID" Type="int" Mode="In" />
+          <Parameter Name="DoctorID" Type="int" Mode="In" />
+          <Parameter Name="DayCreated" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_MEDICINE_getAllMedicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_PRESCRIPTION_AddNewIncription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MecRcDtID" Type="int" Mode="In" />
@@ -29,6 +30,9 @@
           <Parameter Name="MedQty" Type="float" Mode="In" />
           <Parameter Name="TimeTakeMedicine" Type="smallint" Mode="In" />
           <Parameter Name="SumMedQty" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="sp_PRESCRIPTION_getByMecRcDetailsID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MecRcDtID" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_REMIND_RemindDetails_AddNewRemind" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MecRcDtID" Type="int" Mode="In" />
@@ -45,16 +49,8 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DRCAREModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="DRCAREEntities1" annotation:LazyLoadingEnabled="true" >
+        <EntityContainer Name="DRCAREEntities" annotation:LazyLoadingEnabled="true" >
           <FunctionImport Name="sp_DISEASE_getAllDisease" ReturnType="Collection(DRCAREModel.sp_DISEASE_getAllDisease_Result)" />
-          <FunctionImport Name="sp_Get_Search_MedicalRecordDetails" ReturnType="Collection(DRCAREModel.sp_Get_Search_MedicalRecordDetails_Result)">
-            <Parameter Name="MecRcID" Mode="In" Type="Int32" />
-            <Parameter Name="DoctorID" Mode="In" Type="Int32" />
-            <Parameter Name="DayCreated" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_getPrecriptionByMecRcDetailsID" ReturnType="Collection(DRCAREModel.sp_getPrecriptionByMecRcDetailsID_Result)">
-            <Parameter Name="MecRcDtID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="sp_getRemindListByMecRcDetailsID" ReturnType="Collection(DRCAREModel.sp_getRemindListByMecRcDetailsID_Result)">
             <Parameter Name="MecRcDetailsID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -63,6 +59,15 @@
             <Parameter Name="DiseaseID" Mode="In" Type="Int32" />
             <Parameter Name="DoctorID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_MedicalRecordDetails_DOCTOR_Get" ReturnType="Collection(DRCAREModel.sp_MedicalRecordDetails_DOCTOR_Get_Result)">
+            <Parameter Name="DoctorID" Mode="In" Type="Int32" />
+            <Parameter Name="DayCreated" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_MedicalRecordDetails_PATIENT_Get" ReturnType="Collection(DRCAREModel.sp_MedicalRecordDetails_PATIENT_Get_Result)">
+            <Parameter Name="MecRcID" Mode="In" Type="Int32" />
+            <Parameter Name="DoctorID" Mode="In" Type="Int32" />
+            <Parameter Name="DayCreated" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="sp_MEDICINE_getAllMedicine" ReturnType="Collection(DRCAREModel.sp_MEDICINE_getAllMedicine_Result)" />
           <FunctionImport Name="sp_PRESCRIPTION_AddNewIncription" ReturnType="Collection(DRCAREModel.sp_PRESCRIPTION_AddNewIncription_Result)">
             <Parameter Name="MecRcDtID" Mode="In" Type="Int32" />
@@ -70,6 +75,9 @@
             <Parameter Name="MedQty" Mode="In" Type="Double" />
             <Parameter Name="TimeTakeMedicine" Mode="In" Type="Int16" />
             <Parameter Name="SumMedQty" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PRESCRIPTION_getByMecRcDetailsID" ReturnType="Collection(DRCAREModel.sp_PRESCRIPTION_getByMecRcDetailsID_Result)">
+            <Parameter Name="MecRcDtID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_REMIND_RemindDetails_AddNewRemind">
             <Parameter Name="MecRcDtID" Mode="In" Type="Int32" />
@@ -87,29 +95,6 @@
           <Property Type="String" Name="DiseOtherName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="DiseDescription" Nullable="true" MaxLength="100" />
         </ComplexType>
-        <ComplexType Name="sp_Get_Search_MedicalRecordDetails_Result">
-          <Property Type="Int32" Name="MecRcDetailsID" Nullable="false" />
-          <Property Type="Int32" Name="MecRcID" Nullable="false" />
-          <Property Type="Int32" Name="DiseaseID" Nullable="false" />
-          <Property Type="String" Name="DISEASE_NAME" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="DoctorID" Nullable="false" />
-          <Property Type="String" Name="Doctor_Name" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Symptoms" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Day_Created" Nullable="true" MaxLength="10" />
-          <Property Type="Boolean" Name="isTaken" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_getPrecriptionByMecRcDetailsID_Result">
-          <Property Type="Int32" Name="mã_phiếu_khám_bệnh" Nullable="false" />
-          <Property Type="String" Name="Tên_thuốc" Nullable="true" MaxLength="80" />
-          <Property Type="Double" Name="SL_thuốc_lần" Nullable="true" />
-          <Property Type="Boolean" Name="Sáng" Nullable="true" />
-          <Property Type="Boolean" Name="Trưa" Nullable="true" />
-          <Property Type="Boolean" Name="Chiều" Nullable="true" />
-          <Property Type="Int16" Name="Số_ngày" Nullable="true" />
-          <Property Type="String" Name="Bác_sĩ" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Ngày_chẩn_đoán" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="Chẩn_đoán" Nullable="true" MaxLength="100" />
-        </ComplexType>
         <ComplexType Name="sp_getRemindListByMecRcDetailsID_Result">
           <Property Type="Int32" Name="RemindID" Nullable="false" />
           <Property Type="String" Name="TimeRemind" Nullable="false" MaxLength="10" />
@@ -126,6 +111,27 @@
           <Property Type="Int32" Name="ErrorLine" Nullable="true" />
           <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
         </ComplexType>
+        <ComplexType Name="sp_MedicalRecordDetails_DOCTOR_Get_Result">
+          <Property Type="Int32" Name="MecRcDetailsID" Nullable="false" />
+          <Property Type="Int32" Name="PatientID" Nullable="false" />
+          <Property Type="String" Name="PATIENTname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DISEASEName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="DoctorID" Nullable="false" />
+          <Property Type="String" Name="Symptoms" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Day_created" Nullable="true" MaxLength="10" />
+          <Property Type="Boolean" Name="isTaken" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_MedicalRecordDetails_PATIENT_Get_Result">
+          <Property Type="Int32" Name="MecRcDetailsID" Nullable="false" />
+          <Property Type="Int32" Name="PatientID" Nullable="false" />
+          <Property Type="Int32" Name="DiseaseID" Nullable="false" />
+          <Property Type="String" Name="DISEASEName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="DoctorID" Nullable="false" />
+          <Property Type="String" Name="DoctorName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Symptoms" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="DayCreated" Nullable="true" MaxLength="10" />
+          <Property Type="Boolean" Name="isTaken" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="sp_MEDICINE_getAllMedicine_Result">
           <Property Type="Int32" Name="MedID" Nullable="false" />
           <Property Type="String" Name="MedName" Nullable="true" MaxLength="80" />
@@ -141,12 +147,21 @@
           <Property Type="Int32" Name="ErrorLine" Nullable="true" />
           <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
         </ComplexType>
+        <ComplexType Name="sp_PRESCRIPTION_getByMecRcDetailsID_Result">
+          <Property Type="Int32" Name="MecRcDetailsID" Nullable="false" />
+          <Property Type="String" Name="MedName" Nullable="true" MaxLength="80" />
+          <Property Type="Double" Name="TimeTakeMedicine" Nullable="true" />
+          <Property Type="Boolean" Name="isMorn" Nullable="true" />
+          <Property Type="Boolean" Name="isNoon" Nullable="true" />
+          <Property Type="Boolean" Name="isAftNoon" Nullable="true" />
+          <Property Type="Int16" Name="DayQty" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DRCAREModelStoreContainer" CdmEntityContainer="DRCAREEntities1" >
+        <EntityContainerMapping StorageEntityContainer="DRCAREModelStoreContainer" CdmEntityContainer="DRCAREEntities" >
           <FunctionImportMapping FunctionImportName="sp_DISEASE_getAllDisease" FunctionName="DRCAREModel.Store.sp_DISEASE_getAllDisease">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DRCAREModel.sp_DISEASE_getAllDisease_Result">
@@ -154,37 +169,6 @@
                 <ScalarProperty Name="DiseName" ColumnName="DiseName" />
                 <ScalarProperty Name="DiseOtherName" ColumnName="DiseOtherName" />
                 <ScalarProperty Name="DiseDescription" ColumnName="DiseDescription" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_Get_Search_MedicalRecordDetails" FunctionName="DRCAREModel.Store.sp_Get_Search_MedicalRecordDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DRCAREModel.sp_Get_Search_MedicalRecordDetails_Result">
-                <ScalarProperty Name="MecRcDetailsID" ColumnName="MecRcDetailsID" />
-                <ScalarProperty Name="MecRcID" ColumnName="MecRcID" />
-                <ScalarProperty Name="DiseaseID" ColumnName="DiseaseID" />
-                <ScalarProperty Name="DISEASE_NAME" ColumnName="DISEASE NAME" />
-                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
-                <ScalarProperty Name="Doctor_Name" ColumnName="Doctor Name" />
-                <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
-                <ScalarProperty Name="Day_Created" ColumnName="Day Created" />
-                <ScalarProperty Name="isTaken" ColumnName="isTaken" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_getPrecriptionByMecRcDetailsID" FunctionName="DRCAREModel.Store.sp_getPrecriptionByMecRcDetailsID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DRCAREModel.sp_getPrecriptionByMecRcDetailsID_Result">
-                <ScalarProperty Name="mã_phiếu_khám_bệnh" ColumnName="mã phiếu khám bệnh" />
-                <ScalarProperty Name="Tên_thuốc" ColumnName="Tên thuốc" />
-                <ScalarProperty Name="SL_thuốc_lần" ColumnName="SL thuốc/lần" />
-                <ScalarProperty Name="Sáng" ColumnName="Sáng" />
-                <ScalarProperty Name="Trưa" ColumnName="Trưa" />
-                <ScalarProperty Name="Chiều" ColumnName="Chiều" />
-                <ScalarProperty Name="Số_ngày" ColumnName="Số ngày" />
-                <ScalarProperty Name="Bác_sĩ" ColumnName="Bác sĩ" />
-                <ScalarProperty Name="Ngày_chẩn_đoán" ColumnName="Ngày chẩn đoán" />
-                <ScalarProperty Name="Chẩn_đoán" ColumnName="Chẩn đoán" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -212,6 +196,35 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_MedicalRecordDetails_DOCTOR_Get" FunctionName="DRCAREModel.Store.sp_MedicalRecordDetails_DOCTOR_Get">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DRCAREModel.sp_MedicalRecordDetails_DOCTOR_Get_Result">
+                <ScalarProperty Name="MecRcDetailsID" ColumnName="MecRcDetailsID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="PATIENTname" ColumnName="PATIENTname" />
+                <ScalarProperty Name="DISEASEName" ColumnName="DISEASEName" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+                <ScalarProperty Name="Day_created" ColumnName="Day created" />
+                <ScalarProperty Name="isTaken" ColumnName="isTaken" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_MedicalRecordDetails_PATIENT_Get" FunctionName="DRCAREModel.Store.sp_MedicalRecordDetails_PATIENT_Get">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DRCAREModel.sp_MedicalRecordDetails_PATIENT_Get_Result">
+                <ScalarProperty Name="MecRcDetailsID" ColumnName="MecRcDetailsID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="DiseaseID" ColumnName="DiseaseID" />
+                <ScalarProperty Name="DISEASEName" ColumnName="DISEASEName" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+                <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+                <ScalarProperty Name="DayCreated" ColumnName="DayCreated" />
+                <ScalarProperty Name="isTaken" ColumnName="isTaken" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_MEDICINE_getAllMedicine" FunctionName="DRCAREModel.Store.sp_MEDICINE_getAllMedicine">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DRCAREModel.sp_MEDICINE_getAllMedicine_Result">
@@ -232,6 +245,19 @@
                 <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
                 <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
                 <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_PRESCRIPTION_getByMecRcDetailsID" FunctionName="DRCAREModel.Store.sp_PRESCRIPTION_getByMecRcDetailsID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DRCAREModel.sp_PRESCRIPTION_getByMecRcDetailsID_Result">
+                <ScalarProperty Name="MecRcDetailsID" ColumnName="MecRcDetailsID" />
+                <ScalarProperty Name="MedName" ColumnName="MedName" />
+                <ScalarProperty Name="TimeTakeMedicine" ColumnName="TimeTakeMedicine" />
+                <ScalarProperty Name="isMorn" ColumnName="isMorn" />
+                <ScalarProperty Name="isNoon" ColumnName="isNoon" />
+                <ScalarProperty Name="isAftNoon" ColumnName="isAftNoon" />
+                <ScalarProperty Name="DayQty" ColumnName="DayQty" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

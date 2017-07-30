@@ -34,32 +34,6 @@ namespace DrCareApi.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_DISEASE_getAllDisease_Result>("sp_DISEASE_getAllDisease");
         }
     
-        public virtual ObjectResult<sp_Get_Search_MedicalRecordDetails_Result> sp_Get_Search_MedicalRecordDetails(Nullable<int> mecRcID, Nullable<int> doctorID, string dayCreated)
-        {
-            var mecRcIDParameter = mecRcID.HasValue ?
-                new ObjectParameter("MecRcID", mecRcID) :
-                new ObjectParameter("MecRcID", typeof(int));
-    
-            var doctorIDParameter = doctorID.HasValue ?
-                new ObjectParameter("DoctorID", doctorID) :
-                new ObjectParameter("DoctorID", typeof(int));
-    
-            var dayCreatedParameter = dayCreated != null ?
-                new ObjectParameter("DayCreated", dayCreated) :
-                new ObjectParameter("DayCreated", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Get_Search_MedicalRecordDetails_Result>("sp_Get_Search_MedicalRecordDetails", mecRcIDParameter, doctorIDParameter, dayCreatedParameter);
-        }
-    
-        public virtual ObjectResult<sp_getPrecriptionByMecRcDetailsID_Result> sp_getPrecriptionByMecRcDetailsID(Nullable<int> mecRcDtID)
-        {
-            var mecRcDtIDParameter = mecRcDtID.HasValue ?
-                new ObjectParameter("MecRcDtID", mecRcDtID) :
-                new ObjectParameter("MecRcDtID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_getPrecriptionByMecRcDetailsID_Result>("sp_getPrecriptionByMecRcDetailsID", mecRcDtIDParameter);
-        }
-    
         public virtual ObjectResult<sp_getRemindListByMecRcDetailsID_Result> sp_getRemindListByMecRcDetailsID(Nullable<int> mecRcDetailsID)
         {
             var mecRcDetailsIDParameter = mecRcDetailsID.HasValue ?
@@ -84,6 +58,36 @@ namespace DrCareApi.Models
                 new ObjectParameter("DoctorID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord_Result>("sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord", mecRcIDParameter, diseaseIDParameter, doctorIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_MedicalRecordDetails_DOCTOR_Get_Result> sp_MedicalRecordDetails_DOCTOR_Get(Nullable<int> doctorID, string dayCreated)
+        {
+            var doctorIDParameter = doctorID.HasValue ?
+                new ObjectParameter("DoctorID", doctorID) :
+                new ObjectParameter("DoctorID", typeof(int));
+    
+            var dayCreatedParameter = dayCreated != null ?
+                new ObjectParameter("DayCreated", dayCreated) :
+                new ObjectParameter("DayCreated", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MedicalRecordDetails_DOCTOR_Get_Result>("sp_MedicalRecordDetails_DOCTOR_Get", doctorIDParameter, dayCreatedParameter);
+        }
+    
+        public virtual ObjectResult<sp_MedicalRecordDetails_PATIENT_Get_Result> sp_MedicalRecordDetails_PATIENT_Get(Nullable<int> mecRcID, Nullable<int> doctorID, string dayCreated)
+        {
+            var mecRcIDParameter = mecRcID.HasValue ?
+                new ObjectParameter("MecRcID", mecRcID) :
+                new ObjectParameter("MecRcID", typeof(int));
+    
+            var doctorIDParameter = doctorID.HasValue ?
+                new ObjectParameter("DoctorID", doctorID) :
+                new ObjectParameter("DoctorID", typeof(int));
+    
+            var dayCreatedParameter = dayCreated != null ?
+                new ObjectParameter("DayCreated", dayCreated) :
+                new ObjectParameter("DayCreated", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MedicalRecordDetails_PATIENT_Get_Result>("sp_MedicalRecordDetails_PATIENT_Get", mecRcIDParameter, doctorIDParameter, dayCreatedParameter);
         }
     
         public virtual ObjectResult<sp_MEDICINE_getAllMedicine_Result> sp_MEDICINE_getAllMedicine()
@@ -114,6 +118,15 @@ namespace DrCareApi.Models
                 new ObjectParameter("SumMedQty", typeof(short));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_PRESCRIPTION_AddNewIncription_Result>("sp_PRESCRIPTION_AddNewIncription", mecRcDtIDParameter, medIDParameter, medQtyParameter, timeTakeMedicineParameter, sumMedQtyParameter);
+        }
+    
+        public virtual ObjectResult<sp_PRESCRIPTION_getByMecRcDetailsID_Result> sp_PRESCRIPTION_getByMecRcDetailsID(Nullable<int> mecRcDtID)
+        {
+            var mecRcDtIDParameter = mecRcDtID.HasValue ?
+                new ObjectParameter("MecRcDtID", mecRcDtID) :
+                new ObjectParameter("MecRcDtID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_PRESCRIPTION_getByMecRcDetailsID_Result>("sp_PRESCRIPTION_getByMecRcDetailsID", mecRcDtIDParameter);
         }
     
         public virtual int sp_REMIND_RemindDetails_AddNewRemind(Nullable<int> mecRcDtID, Nullable<int> remindID, Nullable<System.TimeSpan> timeRemind, Nullable<int> isRepeat, string sound, string label, Nullable<bool> isActivate)

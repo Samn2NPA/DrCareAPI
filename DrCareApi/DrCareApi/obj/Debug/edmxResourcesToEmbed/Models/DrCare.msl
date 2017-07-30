@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DRCAREModelStoreContainer" CdmEntityContainer="DRCAREEntities1">
+  <EntityContainerMapping StorageEntityContainer="DRCAREModelStoreContainer" CdmEntityContainer="DRCAREEntities">
     <FunctionImportMapping FunctionImportName="sp_DISEASE_getAllDisease" FunctionName="DRCAREModel.Store.sp_DISEASE_getAllDisease">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DRCAREModel.sp_DISEASE_getAllDisease_Result">
@@ -8,37 +8,6 @@
           <ScalarProperty Name="DiseName" ColumnName="DiseName" />
           <ScalarProperty Name="DiseOtherName" ColumnName="DiseOtherName" />
           <ScalarProperty Name="DiseDescription" ColumnName="DiseDescription" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_Get_Search_MedicalRecordDetails" FunctionName="DRCAREModel.Store.sp_Get_Search_MedicalRecordDetails">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DRCAREModel.sp_Get_Search_MedicalRecordDetails_Result">
-          <ScalarProperty Name="MecRcDetailsID" ColumnName="MecRcDetailsID" />
-          <ScalarProperty Name="MecRcID" ColumnName="MecRcID" />
-          <ScalarProperty Name="DiseaseID" ColumnName="DiseaseID" />
-          <ScalarProperty Name="DISEASE_NAME" ColumnName="DISEASE NAME" />
-          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
-          <ScalarProperty Name="Doctor_Name" ColumnName="Doctor Name" />
-          <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
-          <ScalarProperty Name="Day_Created" ColumnName="Day Created" />
-          <ScalarProperty Name="isTaken" ColumnName="isTaken" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_getPrecriptionByMecRcDetailsID" FunctionName="DRCAREModel.Store.sp_getPrecriptionByMecRcDetailsID">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DRCAREModel.sp_getPrecriptionByMecRcDetailsID_Result">
-          <ScalarProperty Name="mã_phiếu_khám_bệnh" ColumnName="mã phiếu khám bệnh" />
-          <ScalarProperty Name="Tên_thuốc" ColumnName="Tên thuốc" />
-          <ScalarProperty Name="SL_thuốc_lần" ColumnName="SL thuốc/lần" />
-          <ScalarProperty Name="Sáng" ColumnName="Sáng" />
-          <ScalarProperty Name="Trưa" ColumnName="Trưa" />
-          <ScalarProperty Name="Chiều" ColumnName="Chiều" />
-          <ScalarProperty Name="Số_ngày" ColumnName="Số ngày" />
-          <ScalarProperty Name="Bác_sĩ" ColumnName="Bác sĩ" />
-          <ScalarProperty Name="Ngày_chẩn_đoán" ColumnName="Ngày chẩn đoán" />
-          <ScalarProperty Name="Chẩn_đoán" ColumnName="Chẩn đoán" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -66,6 +35,35 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_MedicalRecordDetails_DOCTOR_Get" FunctionName="DRCAREModel.Store.sp_MedicalRecordDetails_DOCTOR_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DRCAREModel.sp_MedicalRecordDetails_DOCTOR_Get_Result">
+          <ScalarProperty Name="MecRcDetailsID" ColumnName="MecRcDetailsID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="PATIENTname" ColumnName="PATIENTname" />
+          <ScalarProperty Name="DISEASEName" ColumnName="DISEASEName" />
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+          <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+          <ScalarProperty Name="Day_created" ColumnName="Day created" />
+          <ScalarProperty Name="isTaken" ColumnName="isTaken" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_MedicalRecordDetails_PATIENT_Get" FunctionName="DRCAREModel.Store.sp_MedicalRecordDetails_PATIENT_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DRCAREModel.sp_MedicalRecordDetails_PATIENT_Get_Result">
+          <ScalarProperty Name="MecRcDetailsID" ColumnName="MecRcDetailsID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="DiseaseID" ColumnName="DiseaseID" />
+          <ScalarProperty Name="DISEASEName" ColumnName="DISEASEName" />
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+          <ScalarProperty Name="DayCreated" ColumnName="DayCreated" />
+          <ScalarProperty Name="isTaken" ColumnName="isTaken" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_MEDICINE_getAllMedicine" FunctionName="DRCAREModel.Store.sp_MEDICINE_getAllMedicine">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DRCAREModel.sp_MEDICINE_getAllMedicine_Result">
@@ -86,6 +84,19 @@
           <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
           <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
           <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_PRESCRIPTION_getByMecRcDetailsID" FunctionName="DRCAREModel.Store.sp_PRESCRIPTION_getByMecRcDetailsID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DRCAREModel.sp_PRESCRIPTION_getByMecRcDetailsID_Result">
+          <ScalarProperty Name="MecRcDetailsID" ColumnName="MecRcDetailsID" />
+          <ScalarProperty Name="MedName" ColumnName="MedName" />
+          <ScalarProperty Name="TimeTakeMedicine" ColumnName="TimeTakeMedicine" />
+          <ScalarProperty Name="isMorn" ColumnName="isMorn" />
+          <ScalarProperty Name="isNoon" ColumnName="isNoon" />
+          <ScalarProperty Name="isAftNoon" ColumnName="isAftNoon" />
+          <ScalarProperty Name="DayQty" ColumnName="DayQty" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

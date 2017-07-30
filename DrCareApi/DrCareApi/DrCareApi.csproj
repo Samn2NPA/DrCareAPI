@@ -80,6 +80,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
@@ -150,13 +153,13 @@
     <Compile Include="Models\sp_DISEASE_getAllDisease_Result.cs">
       <DependentUpon>DrCare.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_getPrecriptionByMecRcDetailsID_Result.cs">
-      <DependentUpon>DrCare.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\sp_getRemindListByMecRcDetailsID_Result.cs">
       <DependentUpon>DrCare.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_Get_Search_MedicalRecordDetails_Result.cs">
+    <Compile Include="Models\sp_MedicalRecordDetails_DOCTOR_Get_Result.cs">
+      <DependentUpon>DrCare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_MedicalRecordDetails_PATIENT_Get_Result.cs">
       <DependentUpon>DrCare.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord_Result.cs">
@@ -166,6 +169,9 @@
       <DependentUpon>DrCare.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_PRESCRIPTION_AddNewIncription_Result.cs">
+      <DependentUpon>DrCare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_PRESCRIPTION_getByMecRcDetailsID_Result.cs">
       <DependentUpon>DrCare.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StatusConnection.cs" />
@@ -183,6 +189,7 @@
     <Content Include="Models\DrCare.edmx.diagram">
       <DependentUpon>DrCare.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\DrCareAPI.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

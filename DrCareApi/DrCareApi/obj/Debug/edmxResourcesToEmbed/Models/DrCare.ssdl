@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DRCAREModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <Function Name="sp_DISEASE_getAllDisease" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="sp_Get_Search_MedicalRecordDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="MecRcID" Type="int" Mode="In" />
-    <Parameter Name="DoctorID" Type="int" Mode="In" />
-    <Parameter Name="DayCreated" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="sp_getPrecriptionByMecRcDetailsID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="MecRcDtID" Type="int" Mode="In" />
-  </Function>
   <Function Name="sp_getRemindListByMecRcDetailsID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="MecRcDetailsID" Type="int" Mode="In" />
   </Function>
@@ -17,6 +9,15 @@
     <Parameter Name="DiseaseID" Type="int" Mode="In" />
     <Parameter Name="DoctorID" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_MedicalRecordDetails_DOCTOR_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DoctorID" Type="int" Mode="In" />
+    <Parameter Name="DayCreated" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_MedicalRecordDetails_PATIENT_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MecRcID" Type="int" Mode="In" />
+    <Parameter Name="DoctorID" Type="int" Mode="In" />
+    <Parameter Name="DayCreated" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_MEDICINE_getAllMedicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_PRESCRIPTION_AddNewIncription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="MecRcDtID" Type="int" Mode="In" />
@@ -24,6 +25,9 @@
     <Parameter Name="MedQty" Type="float" Mode="In" />
     <Parameter Name="TimeTakeMedicine" Type="smallint" Mode="In" />
     <Parameter Name="SumMedQty" Type="smallint" Mode="In" />
+  </Function>
+  <Function Name="sp_PRESCRIPTION_getByMecRcDetailsID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MecRcDtID" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_REMIND_RemindDetails_AddNewRemind" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="MecRcDtID" Type="int" Mode="In" />

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DRCAREModelStoreContainer" CdmEntityContainer="DRCAREEntities1">
+    <FunctionImportMapping FunctionImportName="sp_DISEASE_getAllDisease" FunctionName="DRCAREModel.Store.sp_DISEASE_getAllDisease">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DRCAREModel.sp_DISEASE_getAllDisease_Result">
+          <ScalarProperty Name="DiseaseID" ColumnName="DiseaseID" />
+          <ScalarProperty Name="DiseName" ColumnName="DiseName" />
+          <ScalarProperty Name="DiseOtherName" ColumnName="DiseOtherName" />
+          <ScalarProperty Name="DiseDescription" ColumnName="DiseDescription" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Get_Search_MedicalRecordDetails" FunctionName="DRCAREModel.Store.sp_Get_Search_MedicalRecordDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DRCAREModel.sp_Get_Search_MedicalRecordDetails_Result">
+          <ScalarProperty Name="MecRcDetailsID" ColumnName="MecRcDetailsID" />
+          <ScalarProperty Name="MecRcID" ColumnName="MecRcID" />
+          <ScalarProperty Name="DiseaseID" ColumnName="DiseaseID" />
+          <ScalarProperty Name="DISEASE_NAME" ColumnName="DISEASE NAME" />
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+          <ScalarProperty Name="Doctor_Name" ColumnName="Doctor Name" />
+          <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+          <ScalarProperty Name="Day_Created" ColumnName="Day Created" />
+          <ScalarProperty Name="isTaken" ColumnName="isTaken" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getPrecriptionByMecRcDetailsID" FunctionName="DRCAREModel.Store.sp_getPrecriptionByMecRcDetailsID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DRCAREModel.sp_getPrecriptionByMecRcDetailsID_Result">
+          <ScalarProperty Name="mã_phiếu_khám_bệnh" ColumnName="mã phiếu khám bệnh" />
+          <ScalarProperty Name="Tên_thuốc" ColumnName="Tên thuốc" />
+          <ScalarProperty Name="SL_thuốc_lần" ColumnName="SL thuốc/lần" />
+          <ScalarProperty Name="Sáng" ColumnName="Sáng" />
+          <ScalarProperty Name="Trưa" ColumnName="Trưa" />
+          <ScalarProperty Name="Chiều" ColumnName="Chiều" />
+          <ScalarProperty Name="Số_ngày" ColumnName="Số ngày" />
+          <ScalarProperty Name="Bác_sĩ" ColumnName="Bác sĩ" />
+          <ScalarProperty Name="Ngày_chẩn_đoán" ColumnName="Ngày chẩn đoán" />
+          <ScalarProperty Name="Chẩn_đoán" ColumnName="Chẩn đoán" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getRemindListByMecRcDetailsID" FunctionName="DRCAREModel.Store.sp_getRemindListByMecRcDetailsID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DRCAREModel.sp_getRemindListByMecRcDetailsID_Result">
+          <ScalarProperty Name="RemindID" ColumnName="RemindID" />
+          <ScalarProperty Name="TimeRemind" ColumnName="TimeRemind" />
+          <ScalarProperty Name="isRepeat" ColumnName="isRepeat" />
+          <ScalarProperty Name="Sound" ColumnName="Sound" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+          <ScalarProperty Name="isActivate" ColumnName="isActivate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord" FunctionName="DRCAREModel.Store.sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DRCAREModel.sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord_Result">
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_MEDICINE_getAllMedicine" FunctionName="DRCAREModel.Store.sp_MEDICINE_getAllMedicine">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DRCAREModel.sp_MEDICINE_getAllMedicine_Result">
+          <ScalarProperty Name="MedID" ColumnName="MedID" />
+          <ScalarProperty Name="MedName" ColumnName="MedName" />
+          <ScalarProperty Name="MedPrice" ColumnName="MedPrice" />
+          <ScalarProperty Name="MedUnit" ColumnName="MedUnit" />
+          <ScalarProperty Name="MedClass" ColumnName="MedClass" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_PRESCRIPTION_AddNewIncription" FunctionName="DRCAREModel.Store.sp_PRESCRIPTION_AddNewIncription">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DRCAREModel.sp_PRESCRIPTION_AddNewIncription_Result">
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_REMIND_RemindDetails_AddNewRemind" FunctionName="DRCAREModel.Store.sp_REMIND_RemindDetails_AddNewRemind" />
+  </EntityContainerMapping>
+</Mapping>
