@@ -41,3 +41,45 @@ E:\PERSONAL\API Dr.Care\DrCareApi\DrCareApi\bin\System.Web.Http.WebHost.xml
 E:\PERSONAL\API Dr.Care\DrCareApi\DrCareApi\obj\Debug\DrCareApi.csprojResolveAssemblyReference.cache
 E:\PERSONAL\API Dr.Care\DrCareApi\DrCareApi\obj\Debug\DrCareApi.dll
 E:\PERSONAL\API Dr.Care\DrCareApi\DrCareApi\obj\Debug\DrCareApi.pdb
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\ApplicationInsights.config
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\csc.exe
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\vbc.exe
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\VBCSCompiler.exe
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\DrCareApi.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\DrCareApi.pdb
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\EntityFramework.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.AI.Web.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.ApplicationInsights.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Newtonsoft.Json.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\System.Net.Http.Formatting.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\System.Web.Http.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\System.Web.Http.WebHost.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\EntityFramework.xml
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.AI.Web.xml
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.ApplicationInsights.xml
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\Newtonsoft.Json.xml
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\System.Net.Http.Formatting.xml
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\System.Web.Http.xml
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\bin\System.Web.Http.WebHost.xml
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\obj\Debug\DrCareApi.csprojResolveAssemblyReference.cache
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\obj\Debug\DrCareApi.dll
+C:\Users\khoa9\OneDrive\Documents\GitHub\DrCareAPI\DrCareApi\DrCareApi\obj\Debug\DrCareApi.pdb
