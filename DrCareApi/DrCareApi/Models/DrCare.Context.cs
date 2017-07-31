@@ -42,7 +42,7 @@ namespace DrCareApi.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_getRemindListByMecRcDetailsID_Result>("sp_getRemindListByMecRcDetailsID", mecRcDetailsIDParameter);
         }
-    //test
+        //input done, show not done
         public virtual ObjectResult<sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord_Result> sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord(Nullable<int> mecRcID, Nullable<int> diseaseID, Nullable<int> doctorID)
         {
             var mecRcIDParameter = mecRcID.HasValue ?
@@ -95,7 +95,7 @@ namespace DrCareApi.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MEDICINE_getAllMedicine_Result>("sp_MEDICINE_getAllMedicine");
         }
-    // ???? error test for sure
+    // input done, show not done
         public virtual ObjectResult<sp_PRESCRIPTION_AddNewIncription_Result> sp_PRESCRIPTION_AddNewIncription(Nullable<int> mecRcDtID, Nullable<int> medID, Nullable<double> medQty, Nullable<short> timeTakeMedicine, Nullable<short> sumMedQty)
         {
             var mecRcDtIDParameter = mecRcDtID.HasValue ?

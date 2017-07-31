@@ -72,7 +72,7 @@ namespace DrCareApi.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-        [Route("PRESCRIPTION/AddNewIncription/{mecRcID?}/{medID?}/{medQty?}/{timeTakeMedicine?}/{sumMedQty?}")]
+        [Route("PRESCRIPTION/AddNewIncription/{mecRcDtID?}/{medID?}/{medQty?}/{timeTakeMedicine?}/{sumMedQty?}")]
         [HttpGet]
         public HttpResponseMessage AddNewIncription(int? mecRcDtID, int? medID, double? medQty, short? timeTakeMedicine, short? sumMedQty)//(int? mecRcID, int? doctorID, string dayCreated)
         {
