@@ -14,6 +14,85 @@ namespace DrCareApi.Controllers
     {
         DRCAREEntities DRCARE = new DRCAREEntities(); //f12 vào đây để coi kiểu trả về khi exec sproc
 
+        /*---------------------------cua anh------------------------------------*/
+        [Route("DISEASE/GetAll")]
+        public HttpResponseMessage GetAllDISEASE()
+        {
+            DiseaseResult result = new DiseaseResult(); //cái này là Model để trả về kết quả cuối cùng
+            //mỗi storeproc sẽ trả về kq khác nhau
+
+            // viết giống ví dụ trên! 
+            StatusConnection stt = checkConnection.isServerConnected();
+
+            //gắn trạng thái về kết quả
+            result.errorMessage = stt.errorMessage;
+            result.status = stt.status;
+
+            //hàm gọi store proc --  đã được viết sẵn trong DBContext rồi
+            // muốn lấy được kiểu trả về của sp thì vào class DRCAREEntities() coi. (F12 vào chỗ khỏi tạo DRCARE ở trên
+            ObjectResult<sp_DISEASE_getAllDisease_Result> obj = DRCARE.sp_DISEASE_getAllDisease();
+            result.response = obj.ToList();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [Route("RemindList/ByMecRcDetailsID/{mecRcDetailsID?}")]
+        [HttpGet]
+        public HttpResponseMessage GetSearchMedicalRecordDetails_Doctor(int? mecRcDetailsID)//(int? mecRcID, int? doctorID, string dayCreated)
+        {
+            RemindList result = new RemindList(); //cái này là Model để trả về kết quả cuối cùng
+
+            StatusConnection stt = checkConnection.isServerConnected();
+
+            result.errorMessage = stt.errorMessage;
+            result.status = stt.status;
+
+            ObjectResult<sp_getRemindListByMecRcDetailsID_Result> obj = DRCARE.sp_getRemindListByMecRcDetailsID(mecRcDetailsID);
+
+            result.response = obj.ToList();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [Route("MedicalRecordDetails/AddNewMedicalRecord/{mecRcID?}/{diseaseID?}/{doctorID?}")]
+        [HttpGet]
+        public HttpResponseMessage AddNewMedicalRecord(int? mecRcID, int? diseaseID, int? doctorID)//(int? mecRcID, int? doctorID, string dayCreated)
+        {
+            AddNewMedicalRecord_Result result = new AddNewMedicalRecord_Result(); //cái này là Model để trả về kết quả cuối cùng
+
+            StatusConnection stt = checkConnection.isServerConnected();
+
+            result.errorMessage = stt.errorMessage;
+            result.status = stt.status;
+
+            ObjectResult<sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord_Result> obj = DRCARE.sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord(mecRcID, diseaseID, doctorID);
+
+            result.response = obj.ToList();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [Route("PRESCRIPTION/AddNewIncription/{mecRcDtID?}/{medID?}/{medQty?}/{timeTakeMedicine?}/{sumMedQty?}")]
+        [HttpGet]
+        public HttpResponseMessage AddNewIncription(int? mecRcDtID, int? medID, double? medQty, short? timeTakeMedicine, short? sumMedQty)//(int? mecRcID, int? doctorID, string dayCreated)
+        {
+            AddNewIncription_Result result = new AddNewIncription_Result(); //cái này là Model để trả về kết quả cuối cùng
+
+            StatusConnection stt = checkConnection.isServerConnected();
+
+            result.errorMessage = stt.errorMessage;
+            result.status = stt.status;
+
+            ObjectResult<sp_PRESCRIPTION_AddNewIncription_Result> obj = DRCARE.sp_PRESCRIPTION_AddNewIncription(mecRcDtID, medID, medQty, timeTakeMedicine, sumMedQty);
+
+            result.response = obj.ToList();
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        /*----------------------------------------------------------------------*/
+
         [Route("Medicine/GetAll")]
         public HttpResponseMessage GetAllMedicine()
         {

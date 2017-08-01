@@ -28,12 +28,12 @@ namespace DrCareApi.Models
             throw new UnintentionalCodeFirstException();
         }
     
-    
+    // test
         public virtual ObjectResult<sp_DISEASE_getAllDisease_Result> sp_DISEASE_getAllDisease()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_DISEASE_getAllDisease_Result>("sp_DISEASE_getAllDisease");
         }
-    
+    // test
         public virtual ObjectResult<sp_getRemindListByMecRcDetailsID_Result> sp_getRemindListByMecRcDetailsID(Nullable<int> mecRcDetailsID)
         {
             var mecRcDetailsIDParameter = mecRcDetailsID.HasValue ?
@@ -42,7 +42,7 @@ namespace DrCareApi.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_getRemindListByMecRcDetailsID_Result>("sp_getRemindListByMecRcDetailsID", mecRcDetailsIDParameter);
         }
-    
+        //input done, show not done
         public virtual ObjectResult<sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord_Result> sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord(Nullable<int> mecRcID, Nullable<int> diseaseID, Nullable<int> doctorID)
         {
             var mecRcIDParameter = mecRcID.HasValue ?
@@ -59,7 +59,7 @@ namespace DrCareApi.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord_Result>("sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord", mecRcIDParameter, diseaseIDParameter, doctorIDParameter);
         }
-    
+    // 1
         public virtual ObjectResult<sp_MedicalRecordDetails_DOCTOR_Get_Result> sp_MedicalRecordDetails_DOCTOR_Get(Nullable<int> doctorID, string dayCreated)
         {
             var doctorIDParameter = doctorID.HasValue ?
@@ -72,7 +72,7 @@ namespace DrCareApi.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MedicalRecordDetails_DOCTOR_Get_Result>("sp_MedicalRecordDetails_DOCTOR_Get", doctorIDParameter, dayCreatedParameter);
         }
-    
+    //???
         public virtual ObjectResult<sp_MedicalRecordDetails_PATIENT_Get_Result> sp_MedicalRecordDetails_PATIENT_Get(Nullable<int> mecRcID, Nullable<int> doctorID, string dayCreated)
         {
             var mecRcIDParameter = mecRcID.HasValue ?
@@ -90,11 +90,12 @@ namespace DrCareApi.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MedicalRecordDetails_PATIENT_Get_Result>("sp_MedicalRecordDetails_PATIENT_Get", mecRcIDParameter, doctorIDParameter, dayCreatedParameter);
         }
     
+    // bae
         public virtual ObjectResult<sp_MEDICINE_getAllMedicine_Result> sp_MEDICINE_getAllMedicine()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MEDICINE_getAllMedicine_Result>("sp_MEDICINE_getAllMedicine");
         }
-    
+    // input done, show not done
         public virtual ObjectResult<sp_PRESCRIPTION_AddNewIncription_Result> sp_PRESCRIPTION_AddNewIncription(Nullable<int> mecRcDtID, Nullable<int> medID, Nullable<double> medQty, Nullable<short> timeTakeMedicine, Nullable<short> sumMedQty)
         {
             var mecRcDtIDParameter = mecRcDtID.HasValue ?
@@ -120,6 +121,7 @@ namespace DrCareApi.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_PRESCRIPTION_AddNewIncription_Result>("sp_PRESCRIPTION_AddNewIncription", mecRcDtIDParameter, medIDParameter, medQtyParameter, timeTakeMedicineParameter, sumMedQtyParameter);
         }
     
+    // bae
         public virtual ObjectResult<sp_PRESCRIPTION_getByMecRcDetailsID_Result> sp_PRESCRIPTION_getByMecRcDetailsID(Nullable<int> mecRcDtID)
         {
             var mecRcDtIDParameter = mecRcDtID.HasValue ?
@@ -128,7 +130,7 @@ namespace DrCareApi.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_PRESCRIPTION_getByMecRcDetailsID_Result>("sp_PRESCRIPTION_getByMecRcDetailsID", mecRcDtIDParameter);
         }
-    
+    // not yet
         public virtual int sp_REMIND_RemindDetails_AddNewRemind(Nullable<int> mecRcDtID, Nullable<int> remindID, Nullable<System.TimeSpan> timeRemind, Nullable<int> isRepeat, string sound, string label, Nullable<bool> isActivate)
         {
             var mecRcDtIDParameter = mecRcDtID.HasValue ?

@@ -5,6 +5,42 @@ using System.Web;
 
 namespace DrCareApi.Models
 {
+    /*------------cua anh--------------*/
+    public class DiseaseResult
+    {
+        public bool status { get; set; }
+        public List<sp_DISEASE_getAllDisease_Result> response { get; set; }
+
+        public string errorMessage { get; set; }
+    }
+
+    public class RemindList
+    {
+        public bool status { get; set; }
+
+        public List<sp_getRemindListByMecRcDetailsID_Result> response { get; set; }
+
+        public string errorMessage { get; set; }
+    }
+
+    public class AddNewMedicalRecord_Result
+    {
+        public bool status { get; set; }
+
+        public List<sp_MEDICAL_RECORD_DETAILS_AddNewMedicalRecord_Result> response { get; set; }
+
+        public string errorMessage { get; set; }
+    }
+
+    public class AddNewIncription_Result
+    {
+        public bool status { get; set; }
+
+        public List<sp_PRESCRIPTION_AddNewIncription_Result> response { get; set; }
+
+        public string errorMessage { get; set; }
+    }
+    /*---------------------------------*/
     public class MedicineResult
     {
         public bool status { get; set; }
